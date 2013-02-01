@@ -7,11 +7,11 @@ A simple script that backs up all the github repos for an organization
 ## Use
 
 ```
-ruby backup.rb account username password
+bin/backup account username password
 ```
 
 ## Tests
 
 ```
-ruby spec/backup_test.rb 
+ruby test/backup_test.rb 
 ```
