@@ -92,18 +92,3 @@ def clone_org_repos(org, user, password, limit=50)
     clone_repo(user, pass, account, repo)
   end
 end
-
-# Main
-if __FILE__==$0
-  if ARGV.length == 3
-    account = ARGV[0]
-    user    = ARGV[1]
-    pass    = ARGV[2]
-    puts colorize("\nMaking backups...", 32)
-    puts list_org_repos(account, user, pass)
-  else
-    puts "Use: backup.rb username password"
-  end
-  puts
-end
-

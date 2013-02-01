@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+
+require 'backup'
+
+args = ARGV.dup
+
+if args.length == 3
+  account = args[0]
+  user    = args[1]
+  pass    = args[2]
+  puts colorize("\nMaking backups...", 32)
+  puts list_org_repos(account, user, pass)
+else
+  puts "Use: backup.rb username password"
+end
+puts
