@@ -6,8 +6,12 @@ A simple script that backs up all the github repos for an organization
 
 ## Use
 
+Add bin/backup to your path
+
+To backup all organization repos
+
 ```
-bin/backup account username password
+backup all <org> <username> <password>
 ```
 
 ## Tests

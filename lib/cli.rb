@@ -18,9 +18,21 @@ class CLI < Thor
   end
 
   desc "clone", "Clone a single repo"
-  def clone(username, pass, account, repo)
+  def clone(account, user, pass, repo)
     backup = Backup::Base.new
-    backup.clone_repo(username, pass, account, repo)
+    backup.clone_repo(user, pass, account, repo)
+  end
+
+  desc "yml", "Backup all repos listed in repos.yml"
+  def yml(account, user, pass)
+    backup = Backup::Base.new
+    backup.backup(account, user, pass)
+  end
+
+  desc "all", "Backup all repos for an org"
+  def all(org, user, pass)
+    backup = Backup::Base.new
+    backup.clone_org_repos(org, user, pass)
   end
 
   desc "list", "List all repos for an organization"

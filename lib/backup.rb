@@ -100,7 +100,7 @@ module Backup
       all_repos.each_with_index.map do |repo, i| 
         repository = split_repo_name(repo)
         puts colorize("\n#{i+1} of #{repo_count}: Cloning #{repo}", 32)
-        clone_repo(user, pass, account, repo)
+        clone_repo(user, password, org, repository)
       end
     end
   end
