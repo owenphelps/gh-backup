@@ -40,7 +40,11 @@ module Backup
     
     # Colorize a string for the terminal
     def colorize(str, code)
-    "\e[#{code}m#{str}\e[0m"
+      if @color
+        "\e[#{code}m#{str}\e[0m"
+      else
+        str
+      end
     end
     
     def make_dir(dir)
