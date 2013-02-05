@@ -1,3 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'thor'
+# Specify your gem's dependencies in gh_backup.gemspec
+gemspec

@@ -1,10 +1,18 @@
-GEM
-  remote: http://rubygems.org/
+PATH
+  remote: .
   specs:
+    gh_backup (0.0.1)
+      rake
+      thor
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rake (10.0.3)
     thor (0.17.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  thor
+  gh_backup!

@@ -1,26 +1,10 @@
-#!/usr/bin/env ruby
-
-# =================================
-#
-# A script that will back up all git repos for 
-# an organization
-#
-# Example
-#
-#   username and password must be authorized for the organization
-#
-#   Use: ruby backup.rb <organization> <username> <password>
-#
-# =================================
-
+require "gh_backup/version"
 require 'yaml'
 require 'json'
 require "thor"
 
-module Backup
+module GhBackup
 
-  REPOS = YAML.load_file('./repos.yml').map(&:strip)
-  
   class Base
 
     def initialize(color=true)
@@ -64,7 +48,7 @@ module Backup
       now = format_current_date
       make_dir("./backups")
       make_dir("./backups/#{now}")
-      path = "backups/#{now}/#{repo}"
+      path = "./backups/#{now}/#{repo}"
       if Dir.exists?(path)
         puts colorize("Dir already exists. Skipping clone", 31)
       else
@@ -73,9 +57,10 @@ module Backup
     end
     
     # Run all backups
-    def backup(account, user, pass)
-      repo_count = Backup::REPOS.length
-      Backup::REPOS.each_with_index do |repo, idx|
+    def backup(f, account, user, pass)
+      repos = YAML.load_file(f).map(&:strip)
+      repo_count = repos.length
+      repos.each_with_index do |repo, idx|
         puts colorize("\n#{idx+1} of #{repo_count}: Cloning #{repo}", 32)
         clone_repo(user, pass, account, repo)  
       end
@@ -119,7 +104,7 @@ module Backup
   class CLI < Thor
     
     def initialize(*args)
-      @backup = Backup::Base.new
+      @backup = Base.new
       super
     end
 

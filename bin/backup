@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/backup'
+require "gh_backup"
 
-Backup::CLI.start
+GhBackup::CLI.start
