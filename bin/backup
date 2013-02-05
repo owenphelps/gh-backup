@@ -1,16 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/backup'
+require_relative '../lib/cli'
 
-args = ARGV.dup
-
-if args.length == 3
-  account = args[0]
-  user    = args[1]
-  pass    = args[2]
-  puts colorize("\nMaking backups...", 32)
-  puts list_org_repos(account, user, pass)
-else
-  puts "Use: backup.rb username password"
-end
-puts
+CLI.start

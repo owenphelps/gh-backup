@@ -77,9 +77,12 @@ end
 
 # Returns an array of all the repos for an organization
 def list_org_repos(org, user, password, limit=50)
-  repos = `curl -u #{user}:#{password} https://api.github.com/orgs/#{org}/repos?per_page=#{limit}`
-  parsed = JSON.parse(repos)
-  parsed.map { |repo| repo["clone_url"] }
+  auth = "#{user}:#{password}"
+  path = "https://api.github.com/orgs/#{org}/repos?per_page=#{limit}"
+  repos = `curl -u #{auth} #{path}`
+  JSON.parse(repos).map do |repo|
+    repo["clone_url"]
+  end
 end
 
 # You can download the repos directly without having to save to YAML
