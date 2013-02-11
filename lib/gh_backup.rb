@@ -6,6 +6,8 @@ require "thor"
 module GhBackup
 
   class Base
+    
+    REPO_LIMIT = 100
 
     def initialize(color=true)
       @color = color
@@ -74,7 +76,7 @@ module GhBackup
     end
     
     # Returns an array of all the repos for an organization
-    def list_org_repos(org, user, password, limit=50)
+    def list_org_repos(org, user, password, limit=REPO_LIMIT)
       auth = "#{user}:#{password}"
       path = "https://api.github.com/orgs/#{org}/repos?per_page=#{limit}"
       repos = `curl -u #{auth} #{path}`
@@ -84,7 +86,7 @@ module GhBackup
     end
     
     # You can download the repos directly without having to save to YAML
-    def clone_org_repos(org, user, password, limit=50)
+    def clone_org_repos(org, user, password, limit=REPO_LIMIT)
       all_repos = list_org_repos(org, user, password, limit)
       repo_count = all_repos.length
       all_repos.each_with_index.map do |repo, i| 
