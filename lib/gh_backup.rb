@@ -7,7 +7,7 @@ module GhBackup
 
   class Base
     
-    REPO_LIMIT = 100
+    REPO_LIMIT = 150
 
     def initialize(color=true)
       @color = color
