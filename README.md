@@ -12,9 +12,21 @@ Install locally with
 
 ## Usage
 
-Backups are placed in a /backups folder in the current directory
+Backups are placed in a folder called backups in the current directory
 
-    backup all <org> <username> <password>
+    backup all <org> <github-username> <github-password>
+    
+Backup all the git repos for your organization
+
+```
+backup list myorg username password
+```
+
+Listing all the git repos for your organization
+
+```
+backup list myorg username password
+```
 
 ## Contributing
 
