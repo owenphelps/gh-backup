@@ -1,6 +1,6 @@
 # GhBackup
 
-A simple script that backs up all the github repos for an organization
+A tools that backs up all github repos for an organization
 
 ![](https://raw.github.com/owainlewis/gh-backup/master/screenshots/preview.png)
 
